@@ -32,6 +32,8 @@ int fd;
 unsigned long baud = 9600;
 unsigned long time=0;
  
+ unsigned int state = 0;
+ 
 //prototypes
 int main(void);
 void loop(void);
@@ -57,12 +59,16 @@ void setup(){
 }
  
 void loop(){
-  // Pong every 3 seconds
-  if(millis()-time>=3000){
-    serialPutchar (fd, 0b0101);
-    // you can also write data from 0-255
-    // 65 is in ASCII 'A'
-    time=millis();
+	if(millis()-time>=3000){
+		if (state == 0)
+			serialPutchar (fd, 0b1111);
+		else
+			serialPutchar (fd, 0b0111);
+	
+    state ^= 1;
+	printf("%id \n", state);
+	fflush(stdout);
+	time=millis();
   }
  
   // read signal
