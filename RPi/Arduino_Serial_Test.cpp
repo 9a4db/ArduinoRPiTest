@@ -66,7 +66,7 @@ void loop(){
 			serialPutchar (fd, 0b0111);
 	
     state ^= 1;
-	printf("%id \n", state);
+	printf("%i \n", state);
 	fflush(stdout);
 	time=millis();
   }
