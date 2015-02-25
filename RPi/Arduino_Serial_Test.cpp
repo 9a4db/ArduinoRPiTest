@@ -59,7 +59,7 @@ void setup(){
 void loop(){
   // Pong every 3 seconds
   if(millis()-time>=3000){
-    serialPuts (fd, "5\n");
+    serialPutchar (fd, 0b0101);
     // you can also write data from 0-255
     // 65 is in ASCII 'A'
     time=millis();
